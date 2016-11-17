@@ -1,0 +1,37 @@
+Website Analyser
+=================================
+
+This file will be packaged with your application when using `activator dist`.
+
+There are several demonstration files available in this template.
+
+Project Framework
+===========
+Java Play 2.5.8
+Template: PlayJava template
+
+
+How to run
+==========
+- Install activator
+- Move to project directory
+- Type the following commands
+-- $ activator
+-- $ run
+
+Go to localhost:9000
+
+
+Project Requirements:
+======================
+ - What HTML version has the document? - DONE
+
+ - What is the page title? - DONE 
+
+ - How many headings of what level are in the document? - DONE
+
+ - How many internal and external links are in the document? Are there any inaccessible links
+
+and how many? - DONE
+
+ - Did the page contain a login-form? - NOT DONE

@@ -1,0 +1,113 @@
+@*
+* This template takes a single argument, a String containing a
+* message to display.
+*@
+@import libraries.WebsiteModel
+@(website: WebsiteModel, url: String)
+@*
+* Call the `main` template with two arguments. The first
+* argument is a `String` with the title of the page, the second
+* argument is an `Html` object containing the body of the page.
+*@
+@main("") {
+    <h1>Website Analysis for @url</h1> | <a href="@routes.HomeController.index()">HOME</a>
+    <hr/>
+    <div id="myDiv" class="animate-bottom">
+        <table>
+            <tr align="left">
+                <th>Website: </th>
+                <td>@url</td>
+            </tr>
+            <tr align="left">
+                <th>HTML Version: </th>
+                <td>@website.getHtmlVersion</td>
+            </tr>
+            <tr align="left">
+                <th>Page Title: </th>
+                <td>@website.getTitle</td>
+            </tr>
+        </table>
+        <h2>Headings</h2>
+        <table>
+            <tr align="left">
+                <th>Total</th>
+                <th>H1</th>
+                <th>H2</th>
+                <th>H3</th>
+                <th>H4</th>
+                <th>H5</th>
+                <th>H6</th>
+            </tr>
+            <tr align="left">
+                <td>@website.gethTagModel().getTotal</td>
+                <td>@website.gethTagModel().gethTags().get("h1")</td>
+                <td>@website.gethTagModel().gethTags().get("h2")</td>
+                <td>@website.gethTagModel().gethTags().get("h3")</td>
+                <td>@website.gethTagModel().gethTags().get("h4")</td>
+                <td>@website.gethTagModel().gethTags().get("h5")</td>
+                <td>@website.gethTagModel().gethTags().get("h6")</td>
+            </tr>
+        </table>
+        <h2>Links</h2>
+        <table>
+            <tr align="left">
+                <th>Total Links</th>
+                <th>Internal Links</th>
+                <th>External Links</th>
+            </tr>
+            <tr align="left">
+                <td>@website.getLinkModel().getTotal()</td>
+                <td>@website.getLinkModel().getTotalInternalLinks()</td>
+                <td>@website.getLinkModel().getTotalExternalLinks()</td>
+            </tr>
+        </table>
+        <table>
+            <tr align="left" valign="top">
+                <th>Internal Links</th>
+                <th>External Links</th>
+            </tr>
+            <tr align="left" valign="top">
+                <td>
+                    <table>
+                        <tr align="left" valign="top">
+                            <th>Link</th>
+                            <td>Status</td>
+                        </tr>
+                        @for((key, value) <- website.getLinkModel().getInteralLinks()) {
+                            <tr align="left" valign="top">
+                                <td>@key</td>
+                                <td>
+                                @if(value.equals("ACCESSIBLE")) {
+                                    <span style="color: green">@value</span>
+                                } else {
+                                    <span style="color: red">@value</span>
+                                }
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </td>
+                <td>
+                    <table>
+                        <tr align="left" valign="top">
+                            <th>Link</th>
+                            <td>Status</td>
+                        </tr>
+                        @for((key, value) <- website.getLinkModel().getExternalLinks()) {
+                            <tr align="left" valign="top">
+                                <td>@key</td>
+                                <td>
+                                @if(value.equals("ACCESSIBLE")) {
+                                    <span style="color: green">@value</span>
+                                } else {
+                                    <span style="color: red">@value</span>
+                                }
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+}

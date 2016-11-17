@@ -1,0 +1,22 @@
+@*
+ * This template takes a single argument, a String containing a
+ * message to display.
+ *@
+@(message: String)
+
+@*
+ * Call the `main` template with two arguments. The first
+ * argument is a `String` with the title of the page, the second
+ * argument is an `Html` object containing the body of the page.
+ *@
+@main("Welcome to IS24 Website Analyser") {
+  <h1>Website Analyser</h1>
+    <div id="loader"></div>
+ <form name="website" method="post" action="@routes.HomeController.analyse()" onsubmit="myFunction()">
+     <input type="text" name="website" placeholder="https://something.com">
+     @if(request().getQueryString("error")) {
+         <p style="color:red">@request().getQueryString("code") : @request().getQueryString("error")</p>
+     }
+     <input type="submit">
+ </form>
+}
