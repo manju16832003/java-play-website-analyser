@@ -22,16 +22,18 @@ How to run
 Go to localhost:9000
 
 
-Project Requirements:
+Project has following features : Analyses the webpage and captures the following information
 ======================
- - What HTML version has the document? - DONE
+ - Extract and Show HTML version of the document
 
- - What is the page title? - DONE 
+ - Etract and Shows page title 
 
- - How many headings of what level are in the document? - DONE
+ - Determin How many headings of what level are in the document
 
- - How many internal and external links are in the document? Are there any inaccessible links
+ - Determine How many internal and external links are in the document? Are there any inaccessible links
 
-and how many? - DONE
+and how many
 
- - Did the page contain a login-form? - NOT DONE
+We could even analyse more: Example
+- Check if the page has facebook login / social login
+- How many images the page has etc
